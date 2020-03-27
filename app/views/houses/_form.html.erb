@@ -12,7 +12,7 @@
     <%= f.label :house_name, "物件名" %>
     <%= f.text_field :house_name %>
     <%= f.label :rent, "賃料" %>
-    <%= f.number_field :rent, step: "0.1" , min: 0.1 %>円
+    <%= f.number_field :rent, step: "0.1" , min: 0.1 %>
     <%= f.label :house_address, "住所" %>
     <%= f.text_field :house_address %>
     <%= f.label :house_age, "築年数" %>
@@ -33,7 +33,7 @@
       <%= s.number_field :minutes_on_foot, min: 0 %>分
     <% end %>
   </div>
-  <%= f.submit %>
+  <%= f.submit "登録する" %>
 <% end %>
 
 

@@ -2,8 +2,7 @@ class HousesController < ApplicationController
   before_action :set_house, only: [:show, :edit, :update, :destroy]
 
   def index
-    @houses = House.all
-    # @houses = House.order("id")
+    @houses = House.order("id")
   end
 
   def show
