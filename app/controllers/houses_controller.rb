@@ -2,7 +2,7 @@ class HousesController < ApplicationController
   before_action :set_house, only: [:show, :edit, :update, :destroy]
 
   def index
-    @houses = House.order("id")
+    @houses = House.all
   end
 
   def show
@@ -22,7 +22,7 @@ class HousesController < ApplicationController
 
     respond_to do |format|
       if @house.save
-        format.html { redirect_to @house, notice: 'House was successfully created.' }
+        format.html { redirect_to @house, notice: '登録ができました' }
         format.json { render :show, status: :created, location: @house }
       else
         display_of_station_field
@@ -35,7 +35,7 @@ class HousesController < ApplicationController
   def update
     respond_to do |format|
       if @house.update(update_house_params)
-        format.html { redirect_to @house, notice: 'House was successfully updated.' }
+        format.html { redirect_to @house, notice: '編集ができました' }
         format.json { render :show, status: :ok, location: @house }
       else
         display_of_station_field
@@ -49,7 +49,7 @@ class HousesController < ApplicationController
     @house.destroy
     @house.stations.destroy
     respond_to do |format|
-      format.html { redirect_to houses_url, notice: 'House was successfully destroyed.' }
+      format.html { redirect_to houses_url, notice: '削除ができました' }
       format.json { head :no_content }
     end
   end
@@ -59,9 +59,7 @@ class HousesController < ApplicationController
   def display_of_station_field
     if @house.stations.to_a.count == 0
       Station::STATION_FORMAT.times { @house.stations.build }
-    end
-
-    if @house.stations.to_a.count == 1 || @house.stations.to_a.count > 1
+      else @house.stations.to_a.count == 1 || @house.stations.to_a.count > 1
       @house.stations.build
     end
   end
